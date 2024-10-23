@@ -81,8 +81,6 @@ async def delete_operation(
             status_code=status.HTTP_404_NOT_FOUND, detail="Operation not found."
         )
 
-    print("####",current_user.id)
-    print("####",operation.operator_id)
     if current_user.role != "operador" or current_user.id != operation.operator_id:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
