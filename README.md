@@ -76,7 +76,7 @@ Esto levantará el servidor en `http://127.0.0.1:8000/`. Puedes acceder a la doc
 <div align="center">
     <figure>
         <a href="./">
-            <img src="./docs/database.png" width="80%"/>
+            <img src="./docs/database.png" width="80%" alt="Database con las pruebas realizadas en el video"/>
         </a>
         <figcaption>Database con las pruebas realizadas en el video</figcaption>
     </figure>
