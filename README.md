@@ -93,12 +93,12 @@ pytest tests/test_users.py
 ```
 
 ## Tecnologías Utilizadas
-- FastAPI: Para la creación de la API.
-- SQLAlchemy: Para interactuar con la base de datos MySQL.
-- JWT: Para la autenticación de usuarios y roles.
-- MySQL: Base de datos utilizada.
-- Uvicorn: Servidor ASGI para ejecutar la API.
-- pytest: Para las pruebas unitarias.
+- **FastAPI:** Para la creación de la API.
+- **SQLAlchemy:** Para interactuar con la base de datos MySQL.
+- **JWT:** Para la autenticación de usuarios y roles.
+- **MySQL:** Base de datos utilizada.
+- **Uvicorn:** Servidor ASGI para ejecutar la API.
+- **pytest:** Para las pruebas unitarias.
 
   
 ## Funcionalidades
@@ -123,15 +123,15 @@ Rutas de pujas:
 
 
 ## Decisiones de Diseño
-- FastAPI: Se eligió por su rendimiento superior, soporte para asincronía y su documentación interactiva integrada.
-- Autenticación JWT: Se implementó para asegurar rutas sensibles y manejar de forma eficiente la autenticación basada en roles (Operador e Inversor).
-- SQLAlchemy con MySQL: Facilita el ORM para gestionar las consultas a la base de datos, asegurando la escalabilidad y portabilidad del código.
-- Separación de roles: Los permisos se manejan a nivel de API, permitiendo que los operadores creen operaciones y los inversores hagan pujas.
+- **FastAPI:** Se eligió por su rendimiento superior, soporte para asincronía y su documentación interactiva integrada.
+- **Autenticación JWT:** Se implementó para asegurar rutas sensibles y manejar de forma eficiente la autenticación basada en roles (Operador e Inversor).
+- **SQLAlchemy con MySQL:** Facilita el ORM para gestionar las consultas a la base de datos, asegurando la escalabilidad y portabilidad del código.
+- **Separación de roles:** Los permisos se manejan a nivel de API, permitiendo que los operadores creen operaciones y los inversores hagan pujas.
 
 ## Escalabilidad y Trabajo Futuro
-- Escalabilidad: El sistema puede escalar fácilmente implementando balanceadores de carga y usando una base de datos distribuida. Además, al estar construido con FastAPI y SQLAlchemy, se puede optimizar para manejar mayor concurrencia con servicios en la nube como AWS o GCP.
+- **Escalabilidad:** El sistema puede escalar fácilmente implementando balanceadores de carga y usando una base de datos distribuida. Además, al estar construido con FastAPI y SQLAlchemy, se puede optimizar para manejar mayor concurrencia con servicios en la nube como AWS o GCP.
 
-- Trabajo Futuro:
+- **Trabajo Futuro:**
     - Implementar WebSockets para subastas en tiempo real.
     - Añadir paginación y filtros avanzados en las rutas de operaciones.
     - Mejorar la seguridad con monitoreo de actividad sospechosa y protección contra ataques de fuerza bruta.
