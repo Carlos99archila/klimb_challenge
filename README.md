@@ -88,6 +88,8 @@ Esto levantará el servidor en `http://127.0.0.1:8000/`. Puedes acceder a la doc
     </figure>
 </div>
 
+<br>
+
 Y también a la documentación generada con Redoc en `http://127.0.0.1:8000/redoc`.
 
 <div align="center">
