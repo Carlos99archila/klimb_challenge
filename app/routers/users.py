@@ -39,6 +39,7 @@ async def create_user(
         )
 
     try:
+        # Crear usuario
         user = await crud.create_user(db, user_create_data)
         return py_schemas.User.model_validate(user)
 
@@ -69,7 +70,10 @@ async def login(
     db: AsyncSession = Depends(get_db),
 ):
 
+    # Obtener datos del usuario
     user = await crud.get_user_by_username(db, form_data.username)
+
+    # Verificar si existe el usuario y las credenciales
     if not user or not pwd_context.verify(form_data.password, user.password_hash):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -77,6 +81,7 @@ async def login(
         )
 
     try:
+        # crear token
         access_token = create_access_token(
             data={"sub": user.username, "role": user.role}
         )
@@ -107,12 +112,15 @@ async def login(
 async def delete_user(user_id: str, db: AsyncSession = Depends(get_db)):
 
     existing_user = await crud.get_user_by_id(db, user_id)
+
+    # Verificar si existe el usuario
     if not existing_user:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="User not found."
         )
 
     try:
+        # Eliminar usuario
         await crud.delete_user_by_id(db, user_id)
 
     except SQLAlchemyError:
@@ -142,14 +150,17 @@ async def get_user(
     user_id: str,
     db: AsyncSession = Depends(get_db),
 ):
-
+    # Traer información del usuario
     existing_user = await crud.get_user_by_id(db, user_id)
+
+    # Verificar si existe
     if not existing_user:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="User not found."
         )
 
     try:
+        # NO retorna nada relacionado al password
         return py_schemas.User.model_validate(existing_user)
 
     except SQLAlchemyError:

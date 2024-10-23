@@ -31,6 +31,7 @@ async def create_bid(
     current_user: py_schemas.User = Depends(get_current_user),
 ) -> py_schemas.BidResponse:
 
+    # Verifica el rol de inversor
     if current_user.role != "inversor":
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
@@ -39,16 +40,19 @@ async def create_bid(
 
     operation = await crud.get_operation_by_id(db, bid_data.operation_id)
 
+    # Verifica existencia de la operación
     if not operation:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="Operation not found."
         )
 
+    # Verifica que este abierta la operación
     if operation.is_closed:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST, detail="Operation is closed"
         )
 
+    # Compara la Fecha actual con la de cierre de la operación
     if datetime.now(timezone.utc).date() > operation.deadline:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -59,18 +63,21 @@ async def create_bid(
         db, current_user.id, bid_data.operation_id
     )
 
+    # Revisa si el mismo usuario ya hizo una oferta
     if existing_bid:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="User has already bid this operation",
         )
 
+    # Se asegura de que el monto no sea cero
     if Decimal(bid_data.amount) <= 0:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Amount of the bid must be greater than zero",
         )
 
+    # Verifica que no se exeda el valor del monto
     if Decimal(operation.amount_required) < Decimal(bid_data.amount) + Decimal(
         operation.amount_collected
     ):
@@ -80,9 +87,11 @@ async def create_bid(
         )
 
     try:
+        # Crea la oferta
         bid = await crud.create_bid(db, bid_data, current_user)
         bid_response = py_schemas.BidResponse.model_validate(bid)
 
+        # Actualiza la operación con el monto colectado
         await crud.update_operation_amount_collected(
             db, bid_data.operation_id, bid_data.amount
         )
@@ -121,11 +130,13 @@ async def get_bid_by_id(
 
     bid = await crud.get_bid_by_id(db, bid_id)
 
+    # Verifica la existencia
     if not bid:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="Bid not found."
         )
 
+    # Comprueba el rol y si esa oferta es del ususario
     if current_user.role != "inversor" or current_user.id != bid.investor_id:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
@@ -155,11 +166,13 @@ async def delete_bid(
 
     bid = await crud.get_bid_by_id(db, bid_id)
 
+    # Verifica la existencia
     if not bid:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="Bid not found."
         )
 
+    # Comprueba rol y que sea el mismo usuario que creo la oferta
     if current_user.role != "inversor" or current_user.id != bid.investor_id:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
@@ -167,16 +180,20 @@ async def delete_bid(
         )
 
     operation = await crud.get_operation_by_id(db, bid.operation_id)
+
+    # Verifica si esta cerrada
     if operation.is_closed:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST, detail="Operation is closed"
         )
 
     try:
+        # Actualiza el valor del monto colectado en la operación
         await crud.update_operation_amount_collected(
             db, bid.operation_id, bid.amount, is_addition=False
         )
 
+        # Eliminación
         await crud.delete_bid_by_id(db, bid_id)
 
     except ValueError as e:
@@ -217,12 +234,14 @@ async def get_bids_by_operation_id(
 
     bids = await crud.get_bids_by_operation_id(db, operation_id)
 
+    # Verifica la existencia
     if not bids:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="No bids found for this operation.",
         )
 
+    # Comprueba que el usuario actual esté en la lista de los que invirtieron en esa operación
     if not current_user.id in [item.investor_id for item in bids]:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,

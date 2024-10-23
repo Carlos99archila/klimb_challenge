@@ -29,12 +29,14 @@ async def create_operation(
     current_user: py_schemas.User = Depends(get_current_user),
 ) -> py_schemas.Operation:
 
+    # Verificar que tenga rol de operador el usuario actual
     if current_user.role != "operador":
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="You do not have permission to create an operation.",
         )
 
+    # El monto no puede ser negativo ni cero
     if operation_data.amount_required <= 0:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -42,6 +44,7 @@ async def create_operation(
         )
 
     try:
+        # Crear operación
         operation = await crud.create_operation(db, operation_data, current_user)
         return operation
 
@@ -59,7 +62,6 @@ async def create_operation(
 # ======================================================
 # Eliminar una operación específica por ID
 # ======================================================
-# --- Eliminar operación (solo operadores) ---
 @router.delete(
     "/operation/{operation_id}",
     status_code=status.HTTP_204_NO_CONTENT,
@@ -76,11 +78,13 @@ async def delete_operation(
 ):
     operation = await crud.get_operation_by_id(db, operation_id)
 
+    # Verifica que existe la operación
     if not operation:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="Operation not found."
         )
 
+    # Verifica el rol de operador y que sea el mismo usuario que la creó
     if current_user.role != "operador" or current_user.id != operation.operator_id:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
@@ -88,6 +92,7 @@ async def delete_operation(
         )
 
     try:
+        # La elimina
         await crud.delete_operation_by_id(db, operation_id)
 
     except SQLAlchemyError:
@@ -135,11 +140,12 @@ async def list_active_operations(
         Si la operación no se encuentra, se devolverá un error 404 con un mensaje indicando que la operación no fue encontrada.""",
 )
 async def get_operation(
-    operation_id: int, 
-    db: AsyncSession = Depends(get_db)
+    operation_id: int, db: AsyncSession = Depends(get_db)
 ) -> py_schemas.Operation:
 
     operation = await crud.get_operation_by_id(db, operation_id)
+
+    # Verifica existencia de la operación
     if not operation:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="Operation not found."
@@ -159,10 +165,9 @@ async def get_operation(
         Se ejecuta diariamente para asegurarse de que todas las operaciones vencidas sean gestionadas correctamente. 
         Si se produce un error en la base de datos o un error interno, se devuelve un código de error 500.""",
 )
-async def update_expired_operations(
-    db: AsyncSession = Depends(get_db)
-):
+async def update_expired_operations(db: AsyncSession = Depends(get_db)):
     try:
+        # Actualiza y cierra las operaciones comparando fechas
         await crud.update_expired_operations(db)
 
     except SQLAlchemyError:
