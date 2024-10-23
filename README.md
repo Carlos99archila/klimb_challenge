@@ -13,7 +13,7 @@ Este proyecto es una solución para el challenge de un sistema de subastas en ti
 - WampServer (para MySQL)
 - Entorno virtual (recomendado)
 
-## Instalación
+## Instalación y ejecución
 
 ### 1. Instalación de WampServer
 - Descarga e instala [WampServer](https://www.wampserver.com/en/).
@@ -102,23 +102,23 @@ pytest tests/test_users.py
   
 ## Funcionalidades
 Rutas de usuarios:
-- `POST` _/users_: Crear un nuevo usuario.
-- `POST` _/login_: Autenticar usuario mediante credenciales.
-- `GET` _/user/{user_id}_: Obtener información del usuario por ID.
-- `DELETE` _/user/{user_id}_: Eliminar un usuario por su ID.
+- `POST` */users*: Crear un nuevo usuario.
+- `POST` */login*: Autenticar usuario mediante credenciales.
+- `GET` */user/{user_id}*: Obtener información del usuario por ID.
+- `DELETE` */user/{user_id}*: Eliminar un usuario por su ID.
   
 Rutas de operaciones:
-- `POST` _/operation_: Crear una nueva operación (solo para operadores).
-- `GET` _/operations_: Listar operaciones activas.
-- `GET` _/operation/{operation_id}_: Obtener información de una operación específica por su ID.
-- `PUT` _/operations/update-expired_: Actualizar operaciones expiradas diariamente.
-- `DELETE` _/operation/{operation_id}_: Eliminar una operación específica por ID.
+- `POST` */operation*: Crear una nueva operación (solo para operadores).
+- `GET` */operations*: Listar operaciones activas.
+- `GET` */operation/{operation_id}*: Obtener información de una operación específica por su ID.
+- `PUT` */operations/update-expired*: Actualizar operaciones expiradas diariamente.
+- `DELETE` */operation/{operation_id}*: Eliminar una operación específica por ID.
   
 Rutas de pujas:
-- `POST` _/bid_: Crear una nueva puja para una operación específica (solo para inversores).
-- `GET` _/bid/{bid_id}_: Obtener información de una oferta por ID.
-- `GET` _/operation/{operation_id}/bids_: Obtener todas las ofertas de una operación específica.
-- `DELETE` _/bid/{bid_id}_: Elimina una oferta específica utilizando su ID.
+- `POST` */bid*: Crear una nueva puja para una operación específica (solo para inversores).
+- `GET` */bid/{bid_id}*: Obtener información de una oferta por ID.
+- `GET` */operation/{operation_id}/bids*: Obtener todas las ofertas de una operación específica.
+- `DELETE` */bid/{bid_id}*: Elimina una oferta específica utilizando su ID.
 
 ## Decisiones de Diseño
 - FastAPI: Se eligió por su rendimiento superior, soporte para asincronía y su documentación interactiva integrada.
