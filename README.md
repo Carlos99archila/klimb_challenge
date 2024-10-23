@@ -2,7 +2,19 @@
 
 Este proyecto es una solución para el challenge de un sistema de subastas en tiempo real para operaciones financieras. Está construido utilizando FastAPI y SQLAlchemy, con una base de datos MySQL.
 
-[Video Tutorial de ejecución](https://youtu.be/6ocFro_jHXw)
+[Ver el tutorial de implementación y ejecución](https://youtu.be/6ocFro_jHXw)
+
+<div align="center">
+    <a href="https://youtu.be/6ocFro_jHXw">Ver el tutorial de implementación y ejecución</a>
+</div>
+
+
+<div align="center">
+    <a href="https://youtu.be/6ocFro_jHXw">
+        <img src="https://img.shields.io/badge/Ver-Video%20Tutorial-blue" alt="Video Tutorial">
+    </a>
+</div>
+
 
 ## Requisitos
 
@@ -32,9 +44,9 @@ cd klimb_challenge
  <div align="center">
     <figure>
         <a href="./">
-            <img src="./docs/db_wamp_server.png" width="80%" alt="Descripción de la API"/>
+            <img src="./docs/db_wamp_server.png" width="80%"/>
         </a>
-        <figcaption>Descripción de la API utilizada en el sistema de subastas financieras.</figcaption>
+        <figcaption>Base de datos con las tablas</figcaption>
     </figure>
 </div>
 
@@ -60,6 +72,24 @@ Para ejecutar la API:
 uvicorn app.main:app --reload
 ```
 Esto levantará el servidor en `http://127.0.0.1:8000/`. Puedes acceder a la documentación interactiva de la API en `http://127.0.0.1:8000/docs`.
+
+<div align="center">
+    <figure>
+        <a href="./">
+            <img src="./docs/API.png" width="80%"/>
+        </a>
+        <figcaption>API cargada y documentada</figcaption>
+    </figure>
+</div>
+
+<div align="center">
+    <figure>
+        <a href="./">
+            <img src="./docs/database.png" width="80%"/>
+        </a>
+        <figcaption>Database con las pruebas realizadas en el video</figcaption>
+    </figure>
+</div>
 
 ### 7. Ejecutar Pruebas
 Para ejecutar las pruebas unitarias:
