@@ -74,6 +74,8 @@ Esto levantará el servidor en `http://127.0.0.1:8000/`. Puedes acceder a la doc
     </figure>
 </div>
 
+<br>
+
 Luego de realizar pruebas, la base de datos deberia lucir algo asi.
 <div align="center">
     <figure style="display: inline-block; text-align: center;">
