@@ -74,10 +74,11 @@ Esto levantará el servidor en `http://127.0.0.1:8000/`. Puedes acceder a la doc
     </figure>
 </div>
 
+Luego de realizar pruebas, la base de datos deberia lucir algo asi.
 <div align="center">
     <figure style="display: inline-block; text-align: center;">
         <a href="./">
-            <img src="./docs/database.png" width="100%" alt="Database con las pruebas realizadas en el video"/>
+            <img src="./docs/database.png" width="100%" />
         </a>
         <figcaption>Database con las pruebas realizadas en el video</figcaption>
     </figure>
@@ -99,23 +100,23 @@ pytest tests/test_users.py
   
 ## Funcionalidades
 Rutas de usuarios:
-- `POST` /users: Crear un nuevo usuario.
-- `POST` /login: Autenticar usuario mediante credenciales.
-- `GET` /user/{user_id}: Obtener información del usuario por ID.
-- `DELETE` /user/{user_id}: Eliminar un usuario por su ID.
+- `POST` _/users_: Crear un nuevo usuario.
+- `POST` _/login_: Autenticar usuario mediante credenciales.
+- `GET` _/user/{user_id}_: Obtener información del usuario por ID.
+- `DELETE` _/user/{user_id}_: Eliminar un usuario por su ID.
   
 Rutas de operaciones:
-- `POST` /operation: Crear una nueva operación (solo para operadores).
-- `GET` /operations: Listar operaciones activas.
-- `GET` /operation/{operation_id}: Obtener información de una operación específica por su ID.
-- `PUT` /operations/update-expired: Actualizar operaciones expiradas diariamente.
-- `DELETE` /operation/{operation_id}: Eliminar una operación específica por ID.
+- `POST` _/operation_: Crear una nueva operación (solo para operadores).
+- `GET` _/operations_: Listar operaciones activas.
+- `GET` _/operation/{operation_id}_: Obtener información de una operación específica por su ID.
+- `PUT` _/operations/update-expired_: Actualizar operaciones expiradas diariamente.
+- `DELETE` _/operation/{operation_id}_: Eliminar una operación específica por ID.
   
 Rutas de pujas:
-- `POST` /bid: Crear una nueva puja para una operación específica (solo para inversores).
-- `GET` /bid/{bid_id}: Obtener información de una oferta por ID.
-- `GET` /operation/{operation_id}/bids: Obtener todas las ofertas de una operación específica.
-- `DELETE` /bid/{bid_id}: Elimina una oferta específica utilizando su ID.
+- `POST` _/bid_: Crear una nueva puja para una operación específica (solo para inversores).
+- `GET` _/bid/{bid_id}_: Obtener información de una oferta por ID.
+- `GET` _/operation/{operation_id}/bids_: Obtener todas las ofertas de una operación específica.
+- `DELETE` _/bid/{bid_id}_: Elimina una oferta específica utilizando su ID.
 
 ## Decisiones de Diseño
 - Se utilizó FastAPI por su eficiencia y facilidad de uso.
