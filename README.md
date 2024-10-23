@@ -3,11 +3,6 @@
 Este proyecto es una solución para el challenge de un sistema de subastas en tiempo real para operaciones financieras. Está construido utilizando FastAPI y SQLAlchemy, con una base de datos MySQL.
 
 [Video Tutorial de ejecución](https://youtu.be/6ocFro_jHXw)
-<div align="center">
-    <a href="./">
-        <img src="./docs/API.png" width="80%"/>
-    </a>
-</div>
 
 ## Requisitos
 
@@ -31,17 +26,24 @@ cd klimb_challenge
 ```
 
 ### 3. Crear la Base de Datos
-- Abre phpMyAdmin y selecciona la base de datos klimb_challenge.
-- Copia y pega el contenido del archivo docs/create_tables.sql en la sección de SQL de phpMyAdmin y ejecútalo. Esto creará las tablas necesarias para el proyecto.
+- Abre `phpMyAdmin`, crea una base de datos llamada `klimb_challenge` e ingresa en ella.
+- Copia y pega el contenido del archivo `docs/create_tables.sql` en la sección de `SQL de phpMyAdmin` y ejecútalo. Esto creará las tablas necesarias para el proyecto.
+
+ <div align="center">
+    <figure>
+        <a href="./">
+            <img src="./docs/db_wamp_server.png" width="80%" alt="Descripción de la API"/>
+        </a>
+        <figcaption>Descripción de la API utilizada en el sistema de subastas financieras.</figcaption>
+    </figure>
+</div>
+
 
 ### 4. Crear un entorno virtual
 Crea un entorno virtual con Python 3.11.9:
 
 ``` bash
-python -m venv .venv
-source .venv/bin/activate  # En Linux/Mac
-# o
-.\.venv\Scripts\activate  # En Windows
+.venv\Scripts\activate
 ```
 
 ### 5. Instalar Dependencias
@@ -64,3 +66,36 @@ Para ejecutar las pruebas unitarias:
 ```bash
 pytest tests/test_users.py
 ```
+
+## Tecnologías Utilizadas
+- FastAPI: Para la creación de la API.
+- SQLAlchemy: Para interactuar con la base de datos MySQL.
+- JWT: Para la autenticación de usuarios y roles.
+- MySQL: Base de datos utilizada.
+- Uvicorn: Servidor ASGI para ejecutar la API.
+- pytest: Para las pruebas unitarias.
+  
+## Funcionalidades
+Rutas de usuarios:
+- `POST` /users: Crear un nuevo usuario.
+- `POST` /login: Autenticar usuario mediante credenciales.
+- `GET` /user/{user_id}: Obtener información del usuario por ID.
+- `DELETE` /user/{user_id}: Eliminar un usuario por su ID.
+  
+Rutas de operaciones:
+- `POST` /operation: Crear una nueva operación (solo para operadores).
+- `GET` /operations: Listar operaciones activas.
+- `GET` /operation/{operation_id}: Obtener información de una operación específica por su ID.
+- `PUT` /operations/update-expired: Actualizar operaciones expiradas diariamente.
+- `DELETE` /operation/{operation_id}: Eliminar una operación específica por ID.
+  
+Rutas de pujas:
+- `POST` /bid: Crear una nueva puja para una operación específica (solo para inversores).
+- `GET` /bid/{bid_id}: Obtener información de una oferta por ID.
+- `GET` /operation/{operation_id}/bids: Obtener todas las ofertas de una operación específica.
+- `DELETE` /bid/{bid_id}: Elimina una oferta específica utilizando su ID.
+
+## Decisiones de Diseño
+- Se utilizó FastAPI por su eficiencia y facilidad de uso.
+- La autenticación está basada en JWT para mantener la seguridad de las rutas sensibles.
+- SQLAlchemy se usó para mantener la flexibilidad y control sobre la base de datos MySQL.
