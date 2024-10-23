@@ -2,17 +2,8 @@
 
 Este proyecto es una solución para el challenge de un sistema de subastas en tiempo real para operaciones financieras. Está construido utilizando FastAPI y SQLAlchemy, con una base de datos MySQL.
 
-[Ver el tutorial de implementación y ejecución](https://youtu.be/6ocFro_jHXw)
-
 <div align="center">
     <a href="https://youtu.be/6ocFro_jHXw">Ver el tutorial de implementación y ejecución</a>
-</div>
-
-
-<div align="center">
-    <a href="https://youtu.be/6ocFro_jHXw">
-        <img src="https://img.shields.io/badge/Ver-Video%20Tutorial-blue" alt="Video Tutorial">
-    </a>
 </div>
 
 
