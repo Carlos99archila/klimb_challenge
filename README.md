@@ -34,6 +34,14 @@ cd klimb_challenge
 
 <div align="center">
     <figure style="display: inline-block; text-align: center;">
+        <a href="./docs/database2.png">
+            <img src="./docs/database2.png" width="50%" />
+        </a>
+    </figure>
+</div>
+
+<div align="center">
+    <figure style="display: inline-block; text-align: center;">
         <a href="./docs/db_wamp_server.png">
             <img src="./docs/db_wamp_server.png" width="100%" />
         </a>
