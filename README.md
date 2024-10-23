@@ -99,26 +99,28 @@ pytest tests/test_users.py
 - MySQL: Base de datos utilizada.
 - Uvicorn: Servidor ASGI para ejecutar la API.
 - pytest: Para las pruebas unitarias.
+
   
 ## Funcionalidades
 Rutas de usuarios:
-- `POST` */users*: Crear un nuevo usuario.
-- `POST` */login*: Autenticar usuario mediante credenciales.
-- `GET` */user/{user_id}*: Obtener información del usuario por ID.
-- `DELETE` */user/{user_id}*: Eliminar un usuario por su ID.
+- `POST` **/users**: Crear un nuevo usuario.
+- `POST` **/login**: Autenticar usuario mediante credenciales.
+- `GET` **/user/{user_id}**: Obtener información del usuario por ID.
+- `DELETE` **/user/{user_id}**: Eliminar un usuario por su ID.
   
 Rutas de operaciones:
-- `POST` */operation*: Crear una nueva operación (solo para operadores).
-- `GET` */operations*: Listar operaciones activas.
-- `GET` */operation/{operation_id}*: Obtener información de una operación específica por su ID.
-- `PUT` */operations/update-expired*: Actualizar operaciones expiradas diariamente.
-- `DELETE` */operation/{operation_id}*: Eliminar una operación específica por ID.
+- `POST` **/operation**: Crear una nueva operación (solo para operadores).
+- `GET` **/operations**: Listar operaciones activas.
+- `GET` **/operation/{operation_id}**: Obtener información de una operación específica por su ID.
+- `PUT` **/operations/update-expired**: Actualizar operaciones expiradas diariamente.
+- `DELETE` **/operation/{operation_id}**: Eliminar una operación específica por ID.
   
 Rutas de pujas:
-- `POST` */bid*: Crear una nueva puja para una operación específica (solo para inversores).
-- `GET` */bid/{bid_id}*: Obtener información de una oferta por ID.
-- `GET` */operation/{operation_id}/bids*: Obtener todas las ofertas de una operación específica.
-- `DELETE` */bid/{bid_id}*: Elimina una oferta específica utilizando su ID.
+- `POST` **/bid**: Crear una nueva puja para una operación específica (solo para inversores).
+- `GET` **/bid/{bid_id}**: Obtener información de una oferta por ID.
+- `GET` **/operation/{operation_id}/bids**: Obtener todas las ofertas de una operación específica.
+- `DELETE` **/bid/{bid_id}**: Elimina una oferta específica utilizando su ID.
+
 
 ## Decisiones de Diseño
 - FastAPI: Se eligió por su rendimiento superior, soporte para asincronía y su documentación interactiva integrada.
