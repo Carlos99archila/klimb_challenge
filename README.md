@@ -32,14 +32,15 @@ cd klimb_challenge
 - Abre `phpMyAdmin`, crea una base de datos llamada `klimb_challenge` e ingresa en ella.
 - Copia y pega el contenido del archivo `docs/create_tables.sql` en la sección de `SQL de phpMyAdmin` y ejecútalo. Esto creará las tablas necesarias para el proyecto.
 
- <div align="center">
-    <figure>
+<div align="center">
+    <figure style="display: inline-block; text-align: center;">
         <a href="./">
-            <img src="./docs/db_wamp_server.png" width="80%"/>
+            <img src="./docs/db_wamp_server.png" width="80%" />
         </a>
-        <figcaption>Base de datos con las tablas</figcaption>
+        <figcaption>Base de datos con las tablas.</figcaption>
     </figure>
 </div>
+
 
 
 ### 4. Crear un entorno virtual
@@ -65,7 +66,7 @@ uvicorn app.main:app --reload
 Esto levantará el servidor en `http://127.0.0.1:8000/`. Puedes acceder a la documentación interactiva de la API en `http://127.0.0.1:8000/docs`.
 
 <div align="center">
-    <figure>
+    <figure style="display: inline-block; text-align: center;">
         <a href="./">
             <img src="./docs/API.png" width="80%"/>
         </a>
@@ -74,7 +75,7 @@ Esto levantará el servidor en `http://127.0.0.1:8000/`. Puedes acceder a la doc
 </div>
 
 <div align="center">
-    <figure>
+    <figure style="display: inline-block; text-align: center;">
         <a href="./">
             <img src="./docs/database.png" width="80%" alt="Database con las pruebas realizadas en el video"/>
         </a>
