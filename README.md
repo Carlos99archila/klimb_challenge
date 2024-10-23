@@ -97,7 +97,7 @@ Y también a la documentación generada con Redoc en `http://127.0.0.1:8000/redo
         <a href="./docs/API2.png">
             <img src="./docs/API2.png" width="100%"/>
         </a>
-        <figcaption>API cargada y documentada</figcaption>
+        <figcaption>API cargada y documentada con Redocly</figcaption>
     </figure>
 </div>
 
