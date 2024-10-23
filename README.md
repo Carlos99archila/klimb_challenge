@@ -55,9 +55,15 @@ cd klimb_challenge
 Crea un entorno virtual con Python 3.11.9:
 
 ``` bash
-.venv\Scripts\activate
-```
+# Crea el entorno virtual
+python -m venv .venv 
 
+# Activar el entorno virtual en Windows
+.venv\Scripts\activate
+
+# Activar el entorno virtual en Linux/Mac
+source .venv/bin/activate
+```
 ### 5. Instalar Dependencias
 Instala las dependencias del proyecto:
 
@@ -82,9 +88,20 @@ Esto levantará el servidor en `http://127.0.0.1:8000/`. Puedes acceder a la doc
     </figure>
 </div>
 
+Y también a la documentación generada con Redoc en http://127.0.0.1:8000/redoc.
+
+<div align="center">
+    <figure style="display: inline-block; text-align: center;">
+        <a href="./docs/API2.png">
+            <img src="./docs/API2.png" width="100%"/>
+        </a>
+        <figcaption>API cargada y documentada</figcaption>
+    </figure>
+</div>
+
 <br>
 
-Luego de realizar pruebas, la base de datos deberia lucir algo asi.
+Luego de realizar pruebas, la base de datos debería lucir similar a lo mostrado a continuación.
 <div align="center">
     <figure style="display: inline-block; text-align: center;">
         <a href="./docs/database.png">
@@ -137,7 +154,7 @@ Rutas de pujas:
 - **Separación de roles:** Los permisos se manejan a nivel de API, permitiendo que los operadores creen operaciones y los inversores hagan pujas.
 
 ## Escalabilidad y Trabajo Futuro
-- **Escalabilidad:** El sistema puede escalar fácilmente implementando balanceadores de carga y usando una base de datos distribuida. Además, al estar construido con FastAPI y SQLAlchemy, se puede optimizar para manejar mayor concurrencia con servicios en la nube como AWS o GCP.
+- **Escalabilidad:** El sistema puede escalar fácilmente implementando balanceadores de carga y usando una base de datos distribuida. Además, al estar construido con FastAPI y SQLAlchemy, se puede usar cualquier base de datos compatible con  SQLAlchemy (PostgreSQL, MySQL, SQLite, Oracle, Microsoft SQL Server, MariaDB, CockroachDB) y optimizar para manejar mayor concurrencia con servicios en la nube como AWS, GCP o Azure.
 
 - **Trabajo Futuro:**
     - Implementar WebSockets para subastas en tiempo real.
