@@ -34,7 +34,7 @@ cd klimb_challenge
 
 <div align="center">
     <figure style="display: inline-block; text-align: center;">
-        <a href="./">
+        <a href="./docs/db_wamp_server.png">
             <img src="./docs/db_wamp_server.png" width="100%" />
         </a>
         <figcaption>Base de datos con las tablas.</figcaption>
@@ -67,7 +67,7 @@ Esto levantará el servidor en `http://127.0.0.1:8000/`. Puedes acceder a la doc
 
 <div align="center">
     <figure style="display: inline-block; text-align: center;">
-        <a href="./">
+        <a href="./docs/API.png">
             <img src="./docs/API.png" width="100%"/>
         </a>
         <figcaption>API cargada y documentada</figcaption>
@@ -79,7 +79,7 @@ Esto levantará el servidor en `http://127.0.0.1:8000/`. Puedes acceder a la doc
 Luego de realizar pruebas, la base de datos deberia lucir algo asi.
 <div align="center">
     <figure style="display: inline-block; text-align: center;">
-        <a href="./">
+        <a href="./docs/database.png">
             <img src="./docs/database.png" width="100%" />
         </a>
         <figcaption>Database con las pruebas realizadas en el video</figcaption>
@@ -121,6 +121,15 @@ Rutas de pujas:
 - `DELETE` _/bid/{bid_id}_: Elimina una oferta específica utilizando su ID.
 
 ## Decisiones de Diseño
-- Se utilizó FastAPI por su eficiencia y facilidad de uso.
-- La autenticación está basada en JWT para mantener la seguridad de las rutas sensibles.
-- SQLAlchemy se usó para mantener la flexibilidad y control sobre la base de datos MySQL.
+- FastAPI: Se eligió por su rendimiento superior, soporte para asincronía y su documentación interactiva integrada.
+- Autenticación JWT: Se implementó para asegurar rutas sensibles y manejar de forma eficiente la autenticación basada en roles (Operador e Inversor).
+- SQLAlchemy con MySQL: Facilita el ORM para gestionar las consultas a la base de datos, asegurando la escalabilidad y portabilidad del código.
+- Separación de roles: Los permisos se manejan a nivel de API, permitiendo que los operadores creen operaciones y los inversores hagan pujas.
+
+## Escalabilidad y Trabajo Futuro
+- Escalabilidad: El sistema puede escalar fácilmente implementando balanceadores de carga y usando una base de datos distribuida. Además, al estar construido con FastAPI y SQLAlchemy, se puede optimizar para manejar mayor concurrencia con servicios en la nube como AWS o GCP.
+
+- Trabajo Futuro:
+    - Implementar WebSockets para subastas en tiempo real.
+    - Añadir paginación y filtros avanzados en las rutas de operaciones.
+    - Mejorar la seguridad con monitoreo de actividad sospechosa y protección contra ataques de fuerza bruta.
