@@ -35,7 +35,7 @@ cd klimb_challenge
 <div align="center">
     <figure style="display: inline-block; text-align: center;">
         <a href="./">
-            <img src="./docs/db_wamp_server.png" width="80%" />
+            <img src="./docs/db_wamp_server.png" width="100%" />
         </a>
         <figcaption>Base de datos con las tablas.</figcaption>
     </figure>
@@ -68,7 +68,7 @@ Esto levantará el servidor en `http://127.0.0.1:8000/`. Puedes acceder a la doc
 <div align="center">
     <figure style="display: inline-block; text-align: center;">
         <a href="./">
-            <img src="./docs/API.png" width="80%"/>
+            <img src="./docs/API.png" width="100%"/>
         </a>
         <figcaption>API cargada y documentada</figcaption>
     </figure>
@@ -77,7 +77,7 @@ Esto levantará el servidor en `http://127.0.0.1:8000/`. Puedes acceder a la doc
 <div align="center">
     <figure style="display: inline-block; text-align: center;">
         <a href="./">
-            <img src="./docs/database.png" width="80%" alt="Database con las pruebas realizadas en el video"/>
+            <img src="./docs/database.png" width="100%" alt="Database con las pruebas realizadas en el video"/>
         </a>
         <figcaption>Database con las pruebas realizadas en el video</figcaption>
     </figure>
